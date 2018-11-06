@@ -15,31 +15,24 @@ class Timer extends React.Component{
     render(){
         return (
             <div className='timer'>
-                {this.state.seconds} {this.props.isPaused?'Y':'N'}
+                {this.state.seconds}
             </div>
         );
     }
 
-    componentWillUpdate(){
-        console.log("Will update")
-    }
-
     componentDidUpdate(prevProps, prevState){
-            
-            console.log("ss")
-            console.log(prevProps.isPaused, this.props.isPaused)
-            if(prevProps.isPaused != this.props.isPaused){
-                console.log("salam")
-                if(this.props.isPaused){
-                    clearInterval(this.interval);
-                }else{
-                    let seconds = this.props.seconds;
-                    this.setState({
-                        seconds
-                    })
-                    this.setTimer();
-                }
+        
+        if(prevProps.timeIsUp != this.props.timeIsUp || this.props.isPaused != prevProps.isPaused){
+            if(this.props.isPaused || this.props.timeIsUp){
+                clearInterval(this.interval);
+            }else{
+                let seconds = this.props.seconds;
+                this.setState({
+                    seconds
+                })
+                this.setTimer();
             }
+        }
 
             
         
@@ -49,33 +42,25 @@ class Timer extends React.Component{
         if(!this.props.isPaused){
             this.setTimer();
         }
-        console.log(this.props,"salam")
-        this.props.dispatch({
-            type: 'TIME_IS_UP'
-        })
     }
 
     setTimer(){
-        this.props.dispatch({
-            type: 'TIMER_RESET'
-        })
         clearInterval(this.interval);
-        // setInterval(()=>{console.log(this.props)},1000)
-        // this.interval = setInterval(()=>{
-        //     let currentSeconds = this.state.seconds;
-        //     if(currentSeconds == 0){
-        //         // Time is up
-        //         clearInterval(this.interval);
-        //         this.props.dispatch({
-        //             type: 'TIME_IS_UP'
-        //         })
-        //         return;
-        //     }
-        //     this.setState({
-        //         seconds: currentSeconds-1
-        //     })
+        this.interval = setInterval(()=>{
+            let currentSeconds = this.state.seconds;
+            if(currentSeconds == 0){
+                // Time is up
+                clearInterval(this.interval);
+                this.props.dispatch({
+                    type: 'TIME_IS_UP'
+                })
+                return;
+            }
+            this.setState({
+                seconds: currentSeconds-1
+            })
             
-        // },1000)
+        },1000)
     }
 
 }
