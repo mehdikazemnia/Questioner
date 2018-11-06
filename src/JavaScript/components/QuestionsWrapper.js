@@ -35,7 +35,6 @@ class QuestionWrapper extends React.Component{
             let questions = [];
             for(let question of data){
                 questions.push(<Question 
-                    current={1}
                     correctAnswer={question.correctAnswer} 
                     answers={question.answers} 
                     number={question.number}
