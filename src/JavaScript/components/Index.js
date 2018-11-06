@@ -8,7 +8,7 @@ class Index extends React.Component{
     render(){
         return (
             <div className='cont'>
-                <Timer seconds={10} isPaused={false} />
+                <Timer seconds={3} />
                 <QuestionWrapper address='questions.json' />
             </div>
         );

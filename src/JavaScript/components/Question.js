@@ -1,4 +1,5 @@
 const React = require('react');
+const {connect} = require('react-redux');
 
 class Question extends React.Component{
     render(){
@@ -43,9 +44,44 @@ class Question extends React.Component{
         }
     }
 
-    userAnswered(value){
-        
+    componentDidUpdate(){
+        if(this.props.timeIsUp && this.props.current == this.props.number){
+            // Time is up
+            let answer = this.props.correct;
+            this.props.dispatch({
+                type: 'ADD_USER_ANSWER',
+                answer,
+                userAnswer: 0
+            })
+        }else if(this.props.current == this.props.number){
+            this.props.dispatch({
+                type: 'TIMER_RESET'
+            })
+        }
     }
+
+    userAnswered(userAnswer){
+        let answer = this.props.correct;
+        this.props.dispatch({
+            type: 'ADD_USER_ANSWER',
+            answer,
+            userAnswer
+        })
+        this.props.dispatch({
+            type: 'PAUSE_TIMER'
+        })
+    }
+
+    
+    componentDidUpdate(){
+        console.log("Updated")
+    }
+ 
 }
 
-module.exports = Question;
+module.exports = connect((state)=>{
+    return {
+        current: state.question.current,
+        timeIsUp: state.question.timeIsUp
+    }
+})(Question); 
