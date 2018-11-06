@@ -1,0 +1,16 @@
+.timer{
+    width: 10rem;
+    height: 6rem;
+    background-color: white;
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: $shadow;
+    z-index: 2;
+}

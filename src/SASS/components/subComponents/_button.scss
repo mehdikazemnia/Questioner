@@ -1,0 +1,17 @@
+.button{
+    background-color: transparent;
+    border: 0.1rem solid $brand-color;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    &:hover{
+        background-color: $brand-color;
+        color: white;
+    }
+    &:active{
+        transform: scale(0.95);
+    }
+    &:focus{
+        outline: none;
+    }
+}
