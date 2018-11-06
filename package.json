@@ -1,0 +1,19 @@
+{
+  "name": "questioner",
+  "version": "0.0.0",
+  "description": "simple Q/A, front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehdikazemnia/questioner.git"
+  },
+  "author": "Mehdi Kazemnia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mehdikazemnia/questioner/issues"
+  },
+  "homepage": "https://github.com/mehdikazemnia/questioner#readme"
+}
