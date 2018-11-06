@@ -39,7 +39,8 @@ class QuestionWrapper extends React.Component{
                     answers={question.answers} 
                     number={question.number}
                     question={question.question}
-                    max={data.length} />);
+                    max={data.length}
+                    key={question.number} />);
             }
 
             this.setState({
