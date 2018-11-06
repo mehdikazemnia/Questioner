@@ -17,3 +17,6 @@ ___
 
 ## Usage
 Visit `localhost:8080`, the rest is clear ;)
+
+## Used Sources
+* questions: https://www.momjunction.com/articles/general-knowledge-questions-for-kids_00439953/#gref
